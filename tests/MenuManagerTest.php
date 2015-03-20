@@ -3,6 +3,7 @@
 namespace Zenify\ModularMenu\Tests;
 
 use PHPUnit_Framework_TestCase;
+use Zenify\ModularMenu\Exceptions\MissingPositionException;
 use Zenify\ModularMenu\MenuManager;
 use Zenify\ModularMenu\Storage\MenuItemStorage;
 
@@ -24,7 +25,8 @@ class MenuManagerTest extends PHPUnit_Framework_TestCase
 
 	public function testGetMenuStructureForNonExistingLocation()
 	{
-		$this->assertFalse($this->menuManager->getMenuStructure('...'));
+		$this->setExpectedException(MissingPositionException::class);
+		$this->menuManager->getMenuStructure('nonExistingPosition');
 	}
 
 }

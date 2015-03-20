@@ -9,6 +9,7 @@
 
 namespace Zenify\ModularMenu\Storage;
 
+use Zenify\ModularMenu\Exceptions\MissingPositionException;
 use Zenify\ModularMenu\Provider\MenuItemsProviderInterface;
 use Zenify\ModularMenu\Structure\MenuItem;
 
@@ -37,7 +38,10 @@ class MenuItemStorage
 		if (isset($this->menuItems[$position])) {
 			return $this->menuItems[$position];
 		}
-		return FALSE;
+
+		throw new MissingPositionException(
+			sprintf('Position "%s" was not found.', $position)
+		);
 	}
 
 }

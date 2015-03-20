@@ -3,6 +3,7 @@
 namespace Zenify\ModularMenu\Tests\Storage;
 
 use PHPUnit_Framework_TestCase;
+use Zenify\ModularMenu\Exceptions\MissingPositionException;
 use Zenify\ModularMenu\Storage\MenuItemStorage;
 use Zenify\ModularMenu\Structure\MenuItemCollection;
 use Zenify\ModularMenu\Tests\MenuItemStorageSource\SomeMenuItemProvider;
@@ -33,7 +34,8 @@ class MenuItemStorageTest extends PHPUnit_Framework_TestCase
 
 	public function testGetByNonExistingPosition()
 	{
-		$this->assertFalse($this->menuItemStorage->getByPosition('frontMenu'));
+		$this->setExpectedException(MissingPositionException::class);
+		$this->menuItemStorage->getByPosition('frontMenu');
 	}
 
 }
