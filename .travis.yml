@@ -14,14 +14,14 @@ matrix:
 
 install:
   - composer create-project --prefer-source --dev --no-interaction zenify/ci vendor/ci @dev
-  - . vendor/ci/coverage-init.sh
+  - . vendor/ci/travis/coverage-init.sh
   - composer install --prefer-source
 
 before_script:
-  - . vendor/ci/static-nalysis.sh
+  - . vendor/ci/travis/static-analysis.sh
 
 script:
   - phpunit $PHPUNIT_FLAGS
 
 after_script:
-  - . vendor/ci/coverage-send.sh
+  - . vendor/ci/travis/coverage-send.sh
