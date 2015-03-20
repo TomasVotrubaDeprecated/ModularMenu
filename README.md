@@ -58,12 +58,12 @@ class MyModuleMenuItemsProvider implements MenuItemsProviderInterface
 	}
 
 }
-...
+```
 
 The return value of `getItems()` is controlled by validator, that will lead you in case of any error.
 
 
-Then, register it as services in `config.neon` of your module:
+Then, register it as service in `config.neon` of your module:
 
 ```yaml
 services:
