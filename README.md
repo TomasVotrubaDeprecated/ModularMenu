@@ -89,6 +89,7 @@ class MenuControl extends Control
 	 */
 	private $menuManager;
 
+	
 	public function __construct(MenuManager $menuManager)
 	{
 		$this->menuManager = $menuManager;
