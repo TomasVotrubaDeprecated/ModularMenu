@@ -25,7 +25,94 @@ extensions:
 
 ## Usage
 
+### 1. Create providers
+
+Create class that extends `Zenify\ModularMenu\Provider\MenuItemsProviderInterface`.
+
+```php
+namespace App\Modules\MyModule\Providers\MyModuleMenuItemsProvider;
+
+use Zenify\ModularMenu\Provider\MenuItemsProviderInterface;
+
+
+class MyModuleMenuItemsProvider implements MenuItemsProviderInterface
+{
+
+	/**
+	 * {@inheritdoc}
+	 */
+	public function getPosition()
+	{
+		return 'adminMenu';
+	}
+
+
+	/**
+	 * {@inheritdoc}
+	 */
+	public function getItems()
+	{
+		return new MenuItemCollection([
+			new MenuItem('Label', ':Module:Presenter:')
+		]);
+	}
+
+}
 ...
+
+The return value of `getItems()` is controlled by validator, that will lead you in case of any error.
+
+
+Then, register it as services in `config.neon` of your module:
+
+```yaml
+services:
+	- App\Modules\MyModule\Providers\MyModuleMenuItemsProvider
+```
+
+### 2. Use in menu component
+
+Now we only need to get collected menu items and render them.
+The render part is up to you, but here we'll use standalone component.
+
+
+```php
+use Nette\Application\UI\Control;
+use Zenify\ModularMenu\MenuManager;
+
+
+class MenuControl extends Control
+{
+
+	/**
+	 * @var MenuManager
+	 */
+	private $menuManager;
+
+	public function __construct(MenuManager $menuManager)
+	{
+		$this->menuManager = $menuManager;
+	}
+	
+	
+	public function render()
+	{
+		$this->template->setFile(__DIR__ . '/templates/default.latte');
+		$this->template->menuItemGroups = $this->menuManager->getMenuStructure('adminMenu');
+	}
+
+}
+```
+
+Our `default.latte` might look like this:
+
+```twig
+<ul n:foreach="$menuItemGroups as $menuItemGroup">
+	<li n:foreach="$menuItemGroup as $menuItem">
+		<a n:href="$menuItem->getPath()">{$menuItem->getPath()}</a>
+	</li>
+</ul>
+```
 
 
 ## Testing
