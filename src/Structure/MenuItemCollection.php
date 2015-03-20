@@ -9,7 +9,6 @@
 
 namespace Zenify\ModularMenu\Structure;
 
-
 use ArrayIterator;
 
 

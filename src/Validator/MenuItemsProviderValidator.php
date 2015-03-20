@@ -41,7 +41,6 @@ class MenuItemsProviderValidator
 			);
 		}
 
-
 		if ( ! $items instanceof MenuItemCollectionInterface) {
 			throw new InvalidArgumentException(
 				sprintf('"%s" expected. "%s" given.', MenuItemCollectionInterface::class, get_class($items))

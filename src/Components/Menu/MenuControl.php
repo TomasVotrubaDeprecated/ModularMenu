@@ -15,5 +15,4 @@ use Nette\Application\UI\Control;
 class MenuControl extends Control
 {
 
-
 }

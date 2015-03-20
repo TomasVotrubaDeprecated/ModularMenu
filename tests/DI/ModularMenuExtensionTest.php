@@ -26,7 +26,6 @@ class ModularMenuExtensionTest extends PHPUnit_Framework_TestCase
 	}
 
 
-
 	public function testLoadConfiguration()
 	{
 		$this->extension->loadConfiguration();
