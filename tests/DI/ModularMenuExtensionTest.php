@@ -7,7 +7,7 @@ use Nette\DI\ContainerBuilder;
 use PHPUnit_Framework_TestCase;
 use Zenify\ModularMenu\DI\ModularMenuExtension;
 use Zenify\ModularMenu\Storage\MenuItemStorage;
-use Zenify\ModularMenu\Tests\DI\ModularMenuExtensionSource\SomeMenuItemsProvider;
+use Zenify\ModularMenu\Tests\Source\SomeMenuItemsProvider;
 
 
 class ModularMenuExtensionTest extends PHPUnit_Framework_TestCase

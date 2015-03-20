@@ -5,6 +5,7 @@ namespace Zenify\ModularMenu\Tests\Structure;
 use PHPUnit_Framework_TestCase;
 use Zenify\ModularMenu\Structure\MenuItem;
 use Zenify\ModularMenu\Structure\MenuItemCollectionInterface;
+use Zenify\ModularMenu\Tests\Source\SomeMenuItemsProvider;
 use Zenify\ModularMenu\Tests\Structure\MenuItemsProviderSource\BlogMenuItemsProvider;
 
 
@@ -13,9 +14,9 @@ class MenuItemsProvider extends PHPUnit_Framework_TestCase
 
 	public function testGetters()
 	{
-		$blogMenuItemsProvider = new BlogMenuItemsProvider;
+		$blogMenuItemsProvider = new SomeMenuItemsProvider;
 
-		$this->assertSame('leftAdminMenu', $blogMenuItemsProvider->getPosition());
+		$this->assertSame('adminMenu', $blogMenuItemsProvider->getPosition());
 
 		$items = $blogMenuItemsProvider->getItems();
 		$this->assertInstanceOf(MenuItemCollectionInterface::class, $items);

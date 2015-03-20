@@ -6,6 +6,8 @@ use PHPUnit_Framework_TestCase;
 use Zenify\ModularMenu\Exceptions\MissingPositionException;
 use Zenify\ModularMenu\MenuManager;
 use Zenify\ModularMenu\Storage\MenuItemStorage;
+use Zenify\ModularMenu\Structure\MenuItemCollection;
+use Zenify\ModularMenu\Tests\Source\SomeMenuItemsProvider;
 
 
 class MenuManagerTest extends PHPUnit_Framework_TestCase
@@ -19,7 +21,19 @@ class MenuManagerTest extends PHPUnit_Framework_TestCase
 
 	protected function setUp()
 	{
-		$this->menuManager = new MenuManager(new MenuItemStorage);
+		$menuItemStorage = new MenuItemStorage;
+		$menuItemStorage->addMenuItemsProvider(new SomeMenuItemsProvider);
+		$this->menuManager = new MenuManager($menuItemStorage);
+	}
+
+
+	public function testGetMenuStructure()
+	{
+		$menuItemGroups = $this->menuManager->getMenuStructure('adminMenu');
+		$this->assertCount(1, $menuItemGroups);
+		foreach ($menuItemGroups as $menuItemCollection) {
+			$this->assertInstanceOf(MenuItemCollection::class, $menuItemCollection);
+		}
 	}
 
 

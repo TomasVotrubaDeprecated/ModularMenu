@@ -6,7 +6,7 @@ use PHPUnit_Framework_TestCase;
 use Zenify\ModularMenu\Exceptions\MissingPositionException;
 use Zenify\ModularMenu\Storage\MenuItemStorage;
 use Zenify\ModularMenu\Structure\MenuItemCollection;
-use Zenify\ModularMenu\Tests\MenuItemStorageSource\SomeMenuItemProvider;
+use Zenify\ModularMenu\Tests\Source\SomeMenuItemsProvider;
 
 
 class MenuItemStorageTest extends PHPUnit_Framework_TestCase
@@ -21,7 +21,7 @@ class MenuItemStorageTest extends PHPUnit_Framework_TestCase
 	protected function setUp()
 	{
 		$this->menuItemStorage = new MenuItemStorage;
-		$this->menuItemStorage->addMenuItemsProvider(new SomeMenuItemProvider);
+		$this->menuItemStorage->addMenuItemsProvider(new SomeMenuItemsProvider);
 	}
 
 

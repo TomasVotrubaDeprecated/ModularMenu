@@ -1,8 +1,10 @@
 <?php
 
-namespace Zenify\ModularMenu\Tests\DI\ModularMenuExtensionSource;
+namespace Zenify\ModularMenu\Tests\Source;
 
 use Zenify\ModularMenu\Provider\MenuItemsProviderInterface;
+use Zenify\ModularMenu\Structure\MenuItem;
+use Zenify\ModularMenu\Structure\MenuItemCollection;
 
 
 class SomeMenuItemsProvider implements MenuItemsProviderInterface
@@ -13,6 +15,7 @@ class SomeMenuItemsProvider implements MenuItemsProviderInterface
 	 */
 	public function getPosition()
 	{
+		return 'adminMenu';
 	}
 
 
@@ -21,7 +24,9 @@ class SomeMenuItemsProvider implements MenuItemsProviderInterface
 	 */
 	public function getItems()
 	{
-		return [];
+		return new MenuItemCollection([
+			new MenuItem('Label', ':Module:Presenter:')
+		]);
 	}
 
 }
