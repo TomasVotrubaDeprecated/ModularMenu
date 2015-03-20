@@ -31,22 +31,44 @@ class MenuItemsProviderValidator
 	 */
 	private function validateItems($items)
 	{
-		if ($items === []) {
-			return TRUE;
+		if ($items !== []) {
+			$this->validateIsObject($items);
+			$this->validateMenuItemCollection($items);
+			$this->validateMenuItems($items);
 		}
 
+		return TRUE;
+	}
+
+
+	/**
+	 * @param mixed $items
+	 */
+	private function validateIsObject($items)
+	{
 		if ( ! is_object($items)) {
 			throw new InvalidArgumentException(
 				sprintf('Object expected. "%s" given.', $items)
 			);
 		}
+	}
 
+
+	/**
+	 * @param mixed $items
+	 */
+	private function validateMenuItemCollection($items)
+	{
 		if ( ! $items instanceof MenuItemCollectionInterface) {
 			throw new InvalidArgumentException(
 				sprintf('"%s" expected. "%s" given.', MenuItemCollectionInterface::class, get_class($items))
 			);
 		}
+	}
 
+
+	private function validateMenuItems(MenuItemCollectionInterface $items)
+	{
 		foreach ($items as $item) {
 			if ( ! $item instanceof MenuItem) {
 				throw new InvalidArgumentException(
@@ -56,8 +78,6 @@ class MenuItemsProviderValidator
 				);
 			}
 		}
-
-		return TRUE;
 	}
 
 }
