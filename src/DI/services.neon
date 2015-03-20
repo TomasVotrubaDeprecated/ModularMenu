@@ -1,5 +1,4 @@
 services:
-	- Zenify\ModularMenu\Components\Menu\MenuControlFactoryInterface
 	- Zenify\ModularMenu\MenuManager
 	- Zenify\ModularMenu\Storage\MenuItemStorage
 	- Zenify\ModularMenu\Structure\MenuItemFactoryInterface
