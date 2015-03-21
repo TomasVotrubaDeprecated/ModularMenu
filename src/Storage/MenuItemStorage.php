@@ -11,7 +11,9 @@ namespace Zenify\ModularMenu\Storage;
 
 use Zenify\ModularMenu\Exceptions\MissingPositionException;
 use Zenify\ModularMenu\Provider\MenuItemsProviderInterface;
+use Zenify\ModularMenu\Provider\RankedMenuItemsProviderInterface;
 use Zenify\ModularMenu\Structure\MenuItem;
+use Zenify\ModularMenu\Tests\MenuManagerRankedSource\RankedMenuItemsProvider;
 
 
 class MenuItemStorage
@@ -25,7 +27,12 @@ class MenuItemStorage
 
 	public function addMenuItemsProvider(MenuItemsProviderInterface $menuItemsProvider)
 	{
-		$this->menuItems[$menuItemsProvider->getPosition()][] = $menuItemsProvider->getItems();
+		if ($menuItemsProvider instanceof RankedMenuItemsProviderInterface) {
+			$this->menuItems[$menuItemsProvider->getPosition()][$menuItemsProvider->getRank()] = $menuItemsProvider->getItems();
+
+		} else {
+			$this->menuItems[$menuItemsProvider->getPosition()][] = $menuItemsProvider->getItems();
+		}
 	}
 
 
@@ -36,7 +43,9 @@ class MenuItemStorage
 	public function getByPosition($position)
 	{
 		if (isset($this->menuItems[$position])) {
-			return $this->menuItems[$position];
+			$menuItemsGroups = $this->menuItems[$position];
+			ksort($menuItemsGroups);
+			return $menuItemsGroups;
 		}
 
 		throw new MissingPositionException(
