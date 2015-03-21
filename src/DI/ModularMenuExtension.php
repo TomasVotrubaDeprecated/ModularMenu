@@ -10,9 +10,11 @@
 namespace Zenify\ModularMenu\DI;
 
 use Nette\DI\CompilerExtension;
+use Nette\DI\ServiceDefinition;
+use Nette\Reflection\ClassType;
 use Zenify\ModularMenu\Provider\MenuItemsProviderInterface;
 use Zenify\ModularMenu\Storage\MenuItemStorage;
-use Zenify\ModularMenu\Tests\Storage\MenuItemStorageTest;
+use Zenify\ModularMenu\Validator\MenuItemsProviderValidator;
 
 
 class ModularMenuExtension extends CompilerExtension
@@ -35,8 +37,20 @@ class ModularMenuExtension extends CompilerExtension
 
 		$menuStorageDefinition = $builder->getDefinition($builder->getByType(MenuItemStorage::class));
 		foreach ($menuItemsProviders as $menuItemsProvider) {
+			$this->validateMenuItemsProvider($menuItemsProvider);
 			$menuStorageDefinition->addSetup('addMenuItemsProvider', [$menuItemsProvider->getClass()]);
 		}
+	}
+
+
+	public function validateMenuItemsProvider(ServiceDefinition $menuItemsProviderDefinition)
+	{
+		$class = $menuItemsProviderDefinition->getClass();
+
+		/** @var MenuItemsProviderInterface $menuItemsProvider */
+		$menuItemsProvider = ClassType::from($class)->newInstanceWithoutConstructor();
+		$validator = new MenuItemsProviderValidator;
+		$validator->validate($menuItemsProvider);
 	}
 
 }

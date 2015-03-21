@@ -1,6 +1,6 @@
 <?php
 
-namespace Zenify\ModularMenu\Tests\DI;
+namespace Zenify\ModularMenu\Tests\DI\ModularMenuExtension;
 
 use Nette\DI\Compiler;
 use Nette\DI\ContainerBuilder;
