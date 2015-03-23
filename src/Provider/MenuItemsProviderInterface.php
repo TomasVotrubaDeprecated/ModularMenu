@@ -9,6 +9,8 @@
 
 namespace Zenify\ModularMenu\Provider;
 
+use Zenify\ModularMenu\Structure\MenuItemCollectionInterface;
+
 
 interface MenuItemsProviderInterface
 {
