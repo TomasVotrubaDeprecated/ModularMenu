@@ -38,7 +38,7 @@ class ModularMenuExtension extends CompilerExtension
 		$menuStorageDefinition = $builder->getDefinition($builder->getByType(MenuItemStorage::class));
 		foreach ($menuItemsProviders as $menuItemsProvider) {
 			$this->validateMenuItemsProvider($menuItemsProvider);
-			$menuStorageDefinition->addSetup('addMenuItemsProvider', [$menuItemsProvider->getClass()]);
+			$menuStorageDefinition->addSetup('addMenuItemsProvider', ['@' . $menuItemsProvider->getClass()]);
 		}
 	}
 

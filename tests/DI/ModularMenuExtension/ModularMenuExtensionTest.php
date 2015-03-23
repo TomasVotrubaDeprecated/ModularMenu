@@ -53,7 +53,10 @@ class ModularMenuExtensionTest extends PHPUnit_Framework_TestCase
 		$builder->prepareClassList();
 		$storageDefinition = $builder->getDefinition($builder->getByType(MenuItemStorage::class));
 		$storageDefinitionSetup = $storageDefinition->getSetup();
-		$this->assertSame(SomeMenuItemsProvider::class, $storageDefinitionSetup[0]->arguments[0]);
+		$this->assertSame(
+			'@' . SomeMenuItemsProvider::class,
+			$storageDefinitionSetup[0]->arguments[0]
+		);
 	}
 
 }
