@@ -10,34 +10,17 @@
 namespace Zenify\ModularMenu\Structure;
 
 
-class MenuItem extends AbstractMenuItem
+class MenuHeadline extends AbstractMenuItem
 {
 
 	/**
-	 * @var string
-	 */
-	private $path;
-
-
-	/**
 	 * @param string $label
-	 * @param string $path
 	 * @param string|NULL $icon
 	 */
-	public function __construct($label, $path, $icon = NULL)
+	public function __construct($label, $icon = NULL)
 	{
 		$this->label = $label;
-		$this->path = $path;
 		$this->icon = $icon;
-	}
-
-
-	/**
-	 * @return string
-	 */
-	public function getPath()
-	{
-		return $this->path;
 	}
 
 }

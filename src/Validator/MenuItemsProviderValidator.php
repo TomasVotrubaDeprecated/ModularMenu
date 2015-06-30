@@ -11,6 +11,7 @@ namespace Zenify\ModularMenu\Validator;
 
 use Zenify\ModularMenu\Exceptions\InvalidArgumentException;
 use Zenify\ModularMenu\Provider\MenuItemsProviderInterface;
+use Zenify\ModularMenu\Structure\AbstractMenuItem;
 use Zenify\ModularMenu\Structure\MenuItem;
 use Zenify\ModularMenu\Structure\MenuItemCollectionInterface;
 
@@ -70,10 +71,10 @@ class MenuItemsProviderValidator
 	private function validateMenuItems(MenuItemCollectionInterface $items)
 	{
 		foreach ($items as $item) {
-			if ( ! $item instanceof MenuItem) {
+			if ( ! $item instanceof AbstractMenuItem) {
 				throw new InvalidArgumentException(
 					sprintf(
-						'"%s" expected. "%s" given.', MenuItem::class, is_object($item) ? get_class($item) : $item
+						'Child of "%s" expected. "%s" given.', AbstractMenuItem::class, is_object($item) ? get_class($item) : $item
 					)
 				);
 			}

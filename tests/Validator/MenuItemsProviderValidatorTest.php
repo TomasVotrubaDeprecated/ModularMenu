@@ -4,6 +4,7 @@ namespace Zenify\ModularMenu\Tests\Validator;
 
 use PHPUnit_Framework_TestCase;
 use Zenify\ModularMenu\Exceptions\InvalidArgumentException;
+use Zenify\ModularMenu\Structure\AbstractMenuItem;
 use Zenify\ModularMenu\Tests\Validator\MenuItemsProviderValidatorSource\InvalidProvider;
 use Zenify\ModularMenu\Tests\Validator\MenuItemsProviderValidatorSource\InvalidProvider2;
 use Zenify\ModularMenu\Tests\Validator\MenuItemsProviderValidatorSource\InvalidProvider3;
@@ -55,7 +56,7 @@ class MenuItemsProviderValidatorTest extends PHPUnit_Framework_TestCase
 		$invalidProvider2 = new InvalidProvider2;
 		$this->setExpectedException(
 			InvalidArgumentException::class,
-			'"Zenify\ModularMenu\Structure\MenuItem" expected. "..." given.'
+			'"' . AbstractMenuItem::class . '" expected. "..." given.'
 		);
 		$this->menuItemsProviderValidator->validate($invalidProvider2);
 	}
@@ -66,7 +67,7 @@ class MenuItemsProviderValidatorTest extends PHPUnit_Framework_TestCase
 		$invalidProvider3 = new InvalidProvider3;
 		$this->setExpectedException(
 			InvalidArgumentException::class,
-			'"Zenify\ModularMenu\Structure\MenuItem" expected. "stdClass" given.'
+			'"' . AbstractMenuItem::class . '" expected. "stdClass" given.'
 		);
 		$this->menuItemsProviderValidator->validate($invalidProvider3);
 	}
