@@ -30,7 +30,6 @@ class MenuManagerRankedTest extends PHPUnit_Framework_TestCase
 		$this->assertFirstItemHasLabel($menuItemGroups[0], 'Label');
 		$this->assertFirstItemHasLabel($menuItemGroups[1], 'Label 2');
 		$this->assertFirstItemHasLabel($menuItemGroups[2], 'Label 3');
-
 	}
 
 
