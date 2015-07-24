@@ -13,7 +13,7 @@ env:
 install:
   - composer create-project --prefer-source --dev --no-interaction zenify/ci vendor/ci @dev
   - . vendor/ci/travis/coverage-init.sh
-  - composer install --prefer-source $PREFER_LOWEST
+  - composer update --prefer-source $PREFER_LOWEST
 
 before_script:
   - . vendor/ci/travis/static-analysis.sh
