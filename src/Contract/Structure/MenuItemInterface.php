@@ -10,15 +10,18 @@
 namespace Zenify\ModularMenu\Contract\Structure;
 
 
-interface MenuItemFactoryInterface
+interface MenuItemInterface
 {
 
-	/**
-	 * @param string $label
-	 * @param string $path
-	 * @param string|NULL $icon
-	 * @return MenuItemInterface
-	 */
-	function create($label, $path, $icon = NULL);
+    /**
+     * @return string
+     */
+    function getLabel();
+
+
+    /**
+     * @return string
+     */
+    function getIcon();
 
 }

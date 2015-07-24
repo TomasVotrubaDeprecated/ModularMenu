@@ -26,9 +26,11 @@ class MenuItem extends AbstractMenuItem
 	 */
 	public function __construct($label, $path, $icon = NULL)
 	{
-		$this->label = $label;
+        $this->setLabel($label);
 		$this->path = $path;
-		$this->icon = $icon;
+        if ($icon) {
+            $this->setIcon($icon);
+        }
 	}
 
 

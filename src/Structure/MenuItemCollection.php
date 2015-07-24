@@ -10,23 +10,26 @@
 namespace Zenify\ModularMenu\Structure;
 
 use ArrayIterator;
+use Assert\Assertion;
 use Zenify\ModularMenu\Contract\Structure\MenuItemCollectionInterface;
+use Zenify\ModularMenu\Contract\Structure\MenuItemInterface;
 
 
 final class MenuItemCollection implements MenuItemCollectionInterface
 {
 
 	/**
-	 * @var MenuItem[]
+	 * @var MenuItemInterface[]
 	 */
 	private $menuItems;
 
 
 	/**
-	 * @param MenuItem[] $menuItems
+	 * @param MenuItemInterface[] $menuItems
 	 */
 	public function __construct(array $menuItems)
 	{
+        Assertion::allIsInstanceOf($menuItems, MenuItemInterface::class);
 		$this->menuItems = $menuItems;
 	}
 

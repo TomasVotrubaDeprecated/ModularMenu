@@ -9,36 +9,59 @@
 
 namespace Zenify\ModularMenu\Structure;
 
+use Assert\Assertion;
+use Zenify\ModularMenu\Contract\Structure\MenuItemInterface;
 
-class AbstractMenuItem
+
+class AbstractMenuItem implements MenuItemInterface
 {
 
 	/**
 	 * @var string
 	 */
-	protected $label;
+	private $label;
 
 	/**
 	 * @var string
 	 */
-	protected $icon;
+	private $icon;
 
 
-	/**
-	 * @return string
-	 */
+    /**
+     * {@inheritdoc}
+     */
 	public function getLabel()
 	{
 		return $this->label;
 	}
 
 
-	/**
-	 * @return string
-	 */
+    /**
+     * {@inheritdoc}
+     */
 	public function getIcon()
 	{
 		return $this->icon;
 	}
+
+
+    /**
+     * @param string $label
+     */
+    protected function setLabel($label)
+    {
+        Assertion::string($label);
+        $this->label = $label;
+    }
+
+
+    /**
+     * @param string $icon
+     */
+    protected function setIcon($icon)
+    {
+        Assertion::string($icon);
+        $this->icon = $icon;
+    }
 
 }

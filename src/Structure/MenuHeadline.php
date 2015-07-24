@@ -19,8 +19,10 @@ class MenuHeadline extends AbstractMenuItem
 	 */
 	public function __construct($label, $icon = NULL)
 	{
-		$this->label = $label;
-		$this->icon = $icon;
+        $this->setLabel($label);
+        if ($icon) {
+            $this->setIcon($icon);
+        }
 	}
 
 }

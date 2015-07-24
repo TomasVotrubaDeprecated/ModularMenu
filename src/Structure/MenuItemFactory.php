@@ -12,7 +12,7 @@ namespace Zenify\ModularMenu\Structure;
 use Zenify\ModularMenu\Contract\Structure\MenuItemFactoryInterface;
 
 
-class MenuItemFactory implements MenuItemFactoryInterface
+final class MenuItemFactory implements MenuItemFactoryInterface
 {
 
     /**
