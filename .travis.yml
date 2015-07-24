@@ -5,7 +5,7 @@ php:
   - 7.0
   - hhvm
 
-matrix:
+env:
   matrix:
     - PREFER_LOWEST="--prefer-lowest"
     - PREFER_LOWEST="
