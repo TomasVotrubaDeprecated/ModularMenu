@@ -11,7 +11,7 @@ namespace Zenify\ModularMenu\DI;
 
 use Nette\DI\CompilerExtension;
 use Nette\DI\ServiceDefinition;
-use Nette\Reflection\ClassType;
+use ReflectionClass;
 use Zenify\ModularMenu\Contract\Provider\MenuItemsProviderInterface;
 use Zenify\ModularMenu\Storage\MenuItemStorage;
 use Zenify\ModularMenu\Validator\MenuItemsProviderValidator;
@@ -19,6 +19,18 @@ use Zenify\ModularMenu\Validator\MenuItemsProviderValidator;
 
 class ModularMenuExtension extends CompilerExtension
 {
+
+	/**
+	 * @var MenuItemsProviderValidator
+	 */
+	private $menuItemsProviderValidator;
+
+
+	public function __construct()
+	{
+		$this->menuItemsProviderValidator = new MenuItemsProviderValidator;
+	}
+
 
 	public function loadConfiguration()
 	{
@@ -48,9 +60,8 @@ class ModularMenuExtension extends CompilerExtension
 		$class = $menuItemsProviderDefinition->getClass();
 
 		/** @var MenuItemsProviderInterface $menuItemsProvider */
-		$menuItemsProvider = ClassType::from($class)->newInstanceWithoutConstructor();
-		$validator = new MenuItemsProviderValidator;
-		$validator->validate($menuItemsProvider);
+		$menuItemsProvider = (new ReflectionClass($class))->newInstanceWithoutConstructor();
+		$this->menuItemsProviderValidator->validate($menuItemsProvider);
 	}
 
 }
