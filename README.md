@@ -97,8 +97,9 @@ class MenuControl extends Control
 	
 	public function render()
 	{
-		$this->template->setFile(__DIR__ . '/templates/default.latte');
-		$this->template->menuItemGroups = $this->menuManager->getMenuStructure('adminMenu');
+		$this->template->render(__DIR__ . '/templates/default.latte', [
+			'menuItemGroups' => $this->menuManager->getMenuStructure('adminMenu')
+		]);
 	}
 
 }
