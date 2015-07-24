@@ -27,18 +27,21 @@ class MenuManagerRankedTest extends PHPUnit_Framework_TestCase
 		/** @var MenuItemCollectionInterface[] $menuItemGroups */
 		$menuItemGroups = $menuManager->getMenuStructure('rankedMenu');
 
-		/** @var MenuItemInterface[] $items */
-		$items = $menuItemGroups[0]->getIterator();
-		$this->assertSame('Label', $items[0]->getLabel());
+		$this->assertFirstItemHasLabel($menuItemGroups[0], 'Label');
+		$this->assertFirstItemHasLabel($menuItemGroups[1], 'Label 2');
+		$this->assertFirstItemHasLabel($menuItemGroups[2], 'Label 3');
 
-		/** @var MenuItemInterface[] $items */
-		$items = $menuItemGroups[1]->getIterator();
-		$this->assertSame('Label 2', $items[0]->getLabel());
+	}
 
-		/** @var MenuItemInterface[] $items */
-		$items = $menuItemGroups[2]->getIterator();
-		$this->assertSame('Label 3', $items[0]->getLabel());
 
+	/**
+	 * @param MenuItemCollectionInterface $menuItemCollection
+	 * @param string $label
+	 */
+	private function assertFirstItemHasLabel(MenuItemCollectionInterface $menuItemCollection, $label)
+	{
+		$items = $menuItemCollection->getIterator();
+		$this->assertSame($label, $items[0]->getLabel());
 	}
 
 }
