@@ -108,11 +108,18 @@ class MenuControl extends Control
 Our `default.latte` might look like this:
 
 ```twig
-<ul n:foreach="$menuItemGroups as $menuItemGroup">
-	<li n:foreach="$menuItemGroup as $menuItem">
-		<a n:href="$menuItem->getPath()">{$menuItem->getPath()}</a>
-	</li>
-</ul>
+{foreach $menuItemGroups as $menuItemGroup}
+	<ul>
+		{foreach $menuItemGroup as $menuItemCollection}
+			{foreach $menuItemCollection as $menuItem}
+				<li>
+					<a n:href="$menuItem->getPath()">{$menuItem->getPath()}</a>
+				</li>
+			{/foreach}
+			{sep}<li class="separator">{/sep}
+		{/foreach}
+	</ul>
+{/foreach}
 ```
 
 
