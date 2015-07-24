@@ -27,12 +27,12 @@ extensions:
 
 ### 1. Create providers
 
-Create class that extends `Zenify\ModularMenu\Provider\MenuItemsProviderInterface`.
+Create class that implements `Zenify\ModularMenu\Contract\Provider\MenuItemsProviderInterface`.
 
 ```php
 namespace App\Modules\MyModule\Providers\MyModuleMenuItemsProvider;
 
-use Zenify\ModularMenu\Provider\MenuItemsProviderInterface;
+use Zenify\ModularMenu\Contract\Provider\MenuItemsProviderInterface;
 
 
 class MyModuleMenuItemsProvider implements MenuItemsProviderInterface
@@ -88,13 +88,13 @@ class MenuControl extends Control
 	 */
 	private $menuManager;
 
-	
+
 	public function __construct(MenuManager $menuManager)
 	{
 		$this->menuManager = $menuManager;
 	}
-	
-	
+
+
 	public function render()
 	{
 		$this->template->render(__DIR__ . '/templates/default.latte', [

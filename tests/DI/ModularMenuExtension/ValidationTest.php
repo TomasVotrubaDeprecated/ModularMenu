@@ -2,11 +2,11 @@
 
 namespace Zenify\ModularMenu\Tests\DI\ModularMenuExtension;
 
+use Assert\InvalidArgumentException;
 use Nette\DI\Compiler;
 use Nette\DI\ContainerBuilder;
 use PHPUnit_Framework_TestCase;
 use Zenify\ModularMenu\DI\ModularMenuExtension;
-use Zenify\ModularMenu\Exception\InvalidArgumentException;
 use Zenify\ModularMenu\Tests\DI\ModularMenuExtension\ValidationSource\InvalidProvider;
 
 

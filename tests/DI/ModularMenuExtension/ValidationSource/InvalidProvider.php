@@ -2,7 +2,7 @@
 
 namespace Zenify\ModularMenu\Tests\DI\ModularMenuExtension\ValidationSource;
 
-use Zenify\ModularMenu\Provider\MenuItemsProviderInterface;
+use Zenify\ModularMenu\Contract\Provider\MenuItemsProviderInterface;
 
 
 class InvalidProvider implements MenuItemsProviderInterface

@@ -12,7 +12,7 @@ namespace Zenify\ModularMenu\DI;
 use Nette\DI\CompilerExtension;
 use Nette\DI\ServiceDefinition;
 use Nette\Reflection\ClassType;
-use Zenify\ModularMenu\Provider\MenuItemsProviderInterface;
+use Zenify\ModularMenu\Contract\Provider\MenuItemsProviderInterface;
 use Zenify\ModularMenu\Storage\MenuItemStorage;
 use Zenify\ModularMenu\Validator\MenuItemsProviderValidator;
 

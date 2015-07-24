@@ -9,11 +9,11 @@
 
 namespace Zenify\ModularMenu;
 
+use Zenify\ModularMenu\Contract\MenuManagerInterface;
 use Zenify\ModularMenu\Storage\MenuItemStorage;
-use Zenify\ModularMenu\Structure\MenuItem;
 
 
-class MenuManager
+final class MenuManager implements MenuManagerInterface
 {
 
 	/**
@@ -28,10 +28,9 @@ class MenuManager
 	}
 
 
-	/**
-	 * @param string $name
-	 * @return bool|MenuItem[]
-	 */
+    /**
+     * {@inheritdoc}
+     */
 	public function getMenuStructure($name)
 	{
 		return $this->menuItemsStorage->getByPosition($name);

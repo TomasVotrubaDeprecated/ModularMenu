@@ -2,7 +2,7 @@
 
 namespace Zenify\ModularMenu\Tests\Validator\MenuItemsProviderValidatorSource;
 
-use Zenify\ModularMenu\Provider\MenuItemsProviderInterface;
+use Zenify\ModularMenu\Contract\Provider\MenuItemsProviderInterface;
 use Zenify\ModularMenu\Structure\MenuItemCollection;
 
 

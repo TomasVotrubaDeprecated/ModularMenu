@@ -7,9 +7,9 @@
  * the file LICENSE that was distributed with this source code.
  */
 
-namespace Zenify\ModularMenu\Provider;
+namespace Zenify\ModularMenu\Contract\Provider;
 
-use Zenify\ModularMenu\Structure\MenuItemCollectionInterface;
+use Zenify\ModularMenu\Contract\Structure\MenuItemCollectionInterface;
 
 
 interface MenuItemsProviderInterface
@@ -24,7 +24,7 @@ interface MenuItemsProviderInterface
 
 
 	/**
-	 * @return MenuItemCollectionInterface[]
+	 * @return MenuItemCollectionInterface
 	 */
 	function getItems();
 

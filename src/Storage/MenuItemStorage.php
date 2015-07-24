@@ -9,9 +9,9 @@
 
 namespace Zenify\ModularMenu\Storage;
 
+use Zenify\ModularMenu\Contract\Provider\RankedMenuItemsProviderInterface;
 use Zenify\ModularMenu\Exception\MissingPositionException;
-use Zenify\ModularMenu\Provider\MenuItemsProviderInterface;
-use Zenify\ModularMenu\Provider\RankedMenuItemsProviderInterface;
+use Zenify\ModularMenu\Contract\Provider\MenuItemsProviderInterface;
 use Zenify\ModularMenu\Structure\MenuItem;
 
 

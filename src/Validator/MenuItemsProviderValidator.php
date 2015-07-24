@@ -9,10 +9,11 @@
 
 namespace Zenify\ModularMenu\Validator;
 
+use Assert\Assertion;
+use Zenify\ModularMenu\Contract\Provider\MenuItemsProviderInterface;
+use Zenify\ModularMenu\Contract\Structure\MenuItemCollectionInterface;
 use Zenify\ModularMenu\Exception\InvalidArgumentException;
-use Zenify\ModularMenu\Provider\MenuItemsProviderInterface;
 use Zenify\ModularMenu\Structure\AbstractMenuItem;
-use Zenify\ModularMenu\Structure\MenuItemCollectionInterface;
 
 
 class MenuItemsProviderValidator
@@ -25,59 +26,19 @@ class MenuItemsProviderValidator
 
 
 	/**
-	 * @param mixed $items
+	 * @param mixed|MenuItemCollectionInterface|AbstractMenuItem[] $items
 	 * @throws InvalidArgumentException
 	 * @return bool
 	 */
 	private function validateItems($items)
 	{
 		if ($items !== []) {
-			$this->validateIsObject($items);
-			$this->validateMenuItemCollection($items);
-			$this->validateMenuItems($items);
+            Assertion::allIsObject($items);
+            Assertion::isInstanceOf($items, MenuItemCollectionInterface::class);
+            Assertion::allIsInstanceOf($items, AbstractMenuItem::class);
 		}
 
 		return TRUE;
-	}
-
-
-	/**
-	 * @param mixed $items
-	 */
-	private function validateIsObject($items)
-	{
-		if ( ! is_object($items)) {
-			throw new InvalidArgumentException(
-				sprintf('Object expected. "%s" given.', $items)
-			);
-		}
-	}
-
-
-	/**
-	 * @param mixed $items
-	 */
-	private function validateMenuItemCollection($items)
-	{
-		if ( ! $items instanceof MenuItemCollectionInterface) {
-			throw new InvalidArgumentException(
-				sprintf('"%s" expected. "%s" given.', MenuItemCollectionInterface::class, get_class($items))
-			);
-		}
-	}
-
-
-	private function validateMenuItems(MenuItemCollectionInterface $items)
-	{
-		foreach ($items as $item) {
-			if ( ! $item instanceof AbstractMenuItem) {
-				throw new InvalidArgumentException(
-					sprintf(
-						'Child of "%s" expected. "%s" given.', AbstractMenuItem::class, is_object($item) ? get_class($item) : $item
-					)
-				);
-			}
-		}
 	}
 
 }

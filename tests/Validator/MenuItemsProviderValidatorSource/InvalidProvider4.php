@@ -3,7 +3,7 @@
 namespace Zenify\ModularMenu\Tests\Validator\MenuItemsProviderValidatorSource;
 
 use stdClass;
-use Zenify\ModularMenu\Provider\MenuItemsProviderInterface;
+use Zenify\ModularMenu\Contract\Provider\MenuItemsProviderInterface;
 
 
 class InvalidProvider4 implements MenuItemsProviderInterface

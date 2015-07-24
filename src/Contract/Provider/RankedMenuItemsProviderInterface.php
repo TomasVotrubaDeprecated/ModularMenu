@@ -7,7 +7,7 @@
  * the file LICENSE that was distributed with this source code.
  */
 
-namespace Zenify\ModularMenu\Provider;
+namespace Zenify\ModularMenu\Contract\Provider;
 
 
 interface RankedMenuItemsProviderInterface extends MenuItemsProviderInterface

@@ -10,9 +10,10 @@
 namespace Zenify\ModularMenu\Structure;
 
 use ArrayIterator;
+use Zenify\ModularMenu\Contract\Structure\MenuItemCollectionInterface;
 
 
-class MenuItemCollection implements MenuItemCollectionInterface
+final class MenuItemCollection implements MenuItemCollectionInterface
 {
 
 	/**

@@ -7,7 +7,9 @@
  * the file LICENSE that was distributed with this source code.
  */
 
-namespace Zenify\ModularMenu\Structure;
+namespace Zenify\ModularMenu\Contract\Structure;
+
+use Zenify\ModularMenu\Structure\MenuItem;
 
 
 interface MenuItemFactoryInterface

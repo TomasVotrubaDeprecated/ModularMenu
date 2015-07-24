@@ -2,7 +2,7 @@
 
 namespace Zenify\ModularMenu\Tests\MenuManagerRankedSource;
 
-use Zenify\ModularMenu\Provider\RankedMenuItemsProviderInterface;
+use Zenify\ModularMenu\Contract\Provider\RankedMenuItemsProviderInterface;
 use Zenify\ModularMenu\Structure\MenuItem;
 use Zenify\ModularMenu\Structure\MenuItemCollection;
 
