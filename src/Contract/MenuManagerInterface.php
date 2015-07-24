@@ -9,7 +9,7 @@
 
 namespace Zenify\ModularMenu\Contract;
 
-use Zenify\ModularMenu\Structure\MenuItem;
+use Zenify\ModularMenu\Contract\Structure\MenuItemCollectionInterface;
 
 
 interface MenuManagerInterface
@@ -17,7 +17,7 @@ interface MenuManagerInterface
 
     /**
      * @param string $name
-     * @return bool|MenuItem[]
+     * @return MenuItemCollectionInterface[]
      */
     function getMenuStructure($name);
 

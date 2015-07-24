@@ -13,10 +13,16 @@ use Zenify\ModularMenu\Contract\Provider\RankedMenuItemsProviderInterface;
 use Zenify\ModularMenu\Exception\MissingPositionException;
 use Zenify\ModularMenu\Contract\Provider\MenuItemsProviderInterface;
 use Zenify\ModularMenu\Structure\MenuItem;
+use Zenify\ModularMenu\Structure\MenuItemCollection;
 
 
 class MenuItemStorage
 {
+
+	/**
+	 * @var int
+	 */
+	const DEFAULT_RANK = 100;
 
 	/**
 	 * @var MenuItem[][]
@@ -27,24 +33,31 @@ class MenuItemStorage
 	public function addMenuItemsProvider(MenuItemsProviderInterface $menuItemsProvider)
 	{
 		if ($menuItemsProvider instanceof RankedMenuItemsProviderInterface) {
-			$this->menuItems[$menuItemsProvider->getPosition()][$menuItemsProvider->getRank()] = $menuItemsProvider->getItems();
+			$this->menuItems[$menuItemsProvider->getPosition()][$menuItemsProvider->getRank()][] = $menuItemsProvider->getItems();
 
 		} else {
-			$this->menuItems[$menuItemsProvider->getPosition()][] = $menuItemsProvider->getItems();
+			$this->menuItems[$menuItemsProvider->getPosition()][self::DEFAULT_RANK][] = $menuItemsProvider->getItems();
 		}
 	}
 
 
 	/**
 	 * @param string $position
-	 * @return MenuItem[]|bool
+	 * @return MenuItemCollection[]
 	 */
 	public function getByPosition($position)
 	{
 		if (isset($this->menuItems[$position])) {
 			$menuItemsGroups = $this->menuItems[$position];
 			ksort($menuItemsGroups);
-			return $menuItemsGroups;
+
+			$menuItemCollections = [];
+			foreach ($menuItemsGroups as $priority => $menuItemsGroup) {
+				foreach ($menuItemsGroup as $menuItemCollection) {
+					$menuItemCollections[] = $menuItemCollection;
+				}
+			}
+			return $menuItemCollections;
 		}
 
 		throw new MissingPositionException(

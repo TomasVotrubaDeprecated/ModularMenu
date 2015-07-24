@@ -15,4 +15,9 @@ use IteratorAggregate;
 interface MenuItemCollectionInterface extends IteratorAggregate
 {
 
+	/**
+	 * @return MenuItemInterface[]
+	 */
+	function getIterator();
+
 }

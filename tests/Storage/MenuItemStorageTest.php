@@ -7,6 +7,7 @@ use Zenify\ModularMenu\Exception\MissingPositionException;
 use Zenify\ModularMenu\Storage\MenuItemStorage;
 use Zenify\ModularMenu\Structure\MenuItemCollection;
 use Zenify\ModularMenu\Tests\Source\SomeMenuItemsProvider;
+use Zenify\ModularMenu\Tests\Storage\MenuItemStorageSource\RankedMenuItemStorage;
 
 
 class MenuItemStorageTest extends PHPUnit_Framework_TestCase
@@ -27,8 +28,18 @@ class MenuItemStorageTest extends PHPUnit_Framework_TestCase
 
 	public function testGetByPosition()
 	{
-		$menuItemCollection = $this->menuItemStorage->getByPosition('adminMenu')[0];
-		$this->assertInstanceOf(MenuItemCollection::class, $menuItemCollection);
+		$menuItemCollection = $this->menuItemStorage->getByPosition('adminMenu');
+		$this->assertInstanceOf(MenuItemCollection::class, $menuItemCollection[0]);
+	}
+
+
+	public function testSameRank()
+	{
+		$this->menuItemStorage->addMenuItemsProvider(new RankedMenuItemStorage);
+		$this->menuItemStorage->addMenuItemsProvider(new RankedMenuItemStorage);
+
+		$this->assertCount(1, $this->menuItemStorage->getByPosition('adminMenu'));
+		$this->assertCount(2, $this->menuItemStorage->getByPosition('someMenu'));
 	}
 
 
