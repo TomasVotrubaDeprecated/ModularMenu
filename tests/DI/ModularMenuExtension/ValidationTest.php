@@ -6,9 +6,8 @@ use Nette\DI\Compiler;
 use Nette\DI\ContainerBuilder;
 use PHPUnit_Framework_TestCase;
 use Zenify\ModularMenu\DI\ModularMenuExtension;
-use Zenify\ModularMenu\Exceptions\InvalidArgumentException;
+use Zenify\ModularMenu\Exception\InvalidArgumentException;
 use Zenify\ModularMenu\Tests\DI\ModularMenuExtension\ValidationSource\InvalidProvider;
-use Zenify\ModularMenu\Tests\Source\SomeMenuItemsProvider;
 
 
 class ValidationTest extends PHPUnit_Framework_TestCase

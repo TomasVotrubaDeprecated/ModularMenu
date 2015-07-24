@@ -3,7 +3,7 @@
 namespace Zenify\ModularMenu\Tests;
 
 use PHPUnit_Framework_TestCase;
-use Zenify\ModularMenu\Exceptions\MissingPositionException;
+use Zenify\ModularMenu\Exception\MissingPositionException;
 use Zenify\ModularMenu\MenuManager;
 use Zenify\ModularMenu\Storage\MenuItemStorage;
 use Zenify\ModularMenu\Structure\MenuItemCollection;

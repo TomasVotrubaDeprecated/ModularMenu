@@ -3,7 +3,7 @@
 namespace Zenify\ModularMenu\Tests\Validator;
 
 use PHPUnit_Framework_TestCase;
-use Zenify\ModularMenu\Exceptions\InvalidArgumentException;
+use Zenify\ModularMenu\Exception\InvalidArgumentException;
 use Zenify\ModularMenu\Structure\AbstractMenuItem;
 use Zenify\ModularMenu\Tests\Validator\MenuItemsProviderValidatorSource\InvalidProvider;
 use Zenify\ModularMenu\Tests\Validator\MenuItemsProviderValidatorSource\InvalidProvider2;

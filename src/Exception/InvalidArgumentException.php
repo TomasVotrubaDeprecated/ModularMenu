@@ -7,7 +7,7 @@
  * the file LICENSE that was distributed with this source code.
  */
 
-namespace Zenify\ModularMenu\Exceptions;
+namespace Zenify\ModularMenu\Exception;
 
 use Exception;
 

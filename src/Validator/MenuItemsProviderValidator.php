@@ -9,10 +9,9 @@
 
 namespace Zenify\ModularMenu\Validator;
 
-use Zenify\ModularMenu\Exceptions\InvalidArgumentException;
+use Zenify\ModularMenu\Exception\InvalidArgumentException;
 use Zenify\ModularMenu\Provider\MenuItemsProviderInterface;
 use Zenify\ModularMenu\Structure\AbstractMenuItem;
-use Zenify\ModularMenu\Structure\MenuItem;
 use Zenify\ModularMenu\Structure\MenuItemCollectionInterface;
 
 
