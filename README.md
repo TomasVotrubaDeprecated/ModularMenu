@@ -27,7 +27,7 @@ extensions:
 
 ### 1. Create providers
 
-Create class that implements `Zenify\ModularMenu\Contract\Provider\MenuItemsProviderInterface`.
+Create class that implements `Zenify\ModularMenu\Contract\Provider\MenuItemsProviderInterface` or `Zenify\ModularMenu\Contract\Provider\RankedMenuItemsProviderInterface` for change position of items.
 
 ```php
 namespace App\Modules\MyModule\Providers\MyModuleMenuItemsProvider;
@@ -108,18 +108,20 @@ class MenuControl extends Control
 Our `default.latte` might look like this:
 
 ```twig
-{foreach $menuItemGroups as $menuItemGroup}
-	<ul>
-		{foreach $menuItemGroup as $menuItemCollection}
+<ul>
+	{foreach $menuItemGroups as $menuItemCollection}
+		<a n:if="$menuItemCollection->hasHeadline()" href="#">
+    		{$menuItemCollection->getHeadline()->getLabel()} <i class="fa fa-caret-left pull-right"></i>
+    	</a>
+    	<ul n:tag-if="$menuItemCollection->hasHeadline()">
 			{foreach $menuItemCollection as $menuItem}
-				<li>
+				<li {ifCurrent $menuItem->getWildcardPath()}class="active"{/ifCurrent}>
 					<a n:href="$menuItem->getPath()">{$menuItem->getPath()}</a>
 				</li>
 			{/foreach}
-			{sep}<li class="separator">{/sep}
-		{/foreach}
-	</ul>
-{/foreach}
+		</ul>
+	{/foreach}
+</ul>
 ```
 
 
