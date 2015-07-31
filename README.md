@@ -110,16 +110,21 @@ Our `default.latte` might look like this:
 ```twig
 <ul>
 	{foreach $menuItemGroups as $menuItemCollection}
-		<a n:if="$menuItemCollection->hasHeadline()" href="#">
-    		{$menuItemCollection->getHeadline()->getLabel()} <i class="fa fa-caret-left pull-right"></i>
-    	</a>
-    	<ul n:tag-if="$menuItemCollection->hasHeadline()">
-			{foreach $menuItemCollection as $menuItem}
-				<li {ifCurrent $menuItem->getWildcardPath()}class="active"{/ifCurrent}>
-					<a n:href="$menuItem->getPath()">{$menuItem->getPath()}</a>
-				</li>
-			{/foreach}
-		</ul>
+		<li>
+			<a n:if="$menuItemCollection->hasHeadline()" href="#">
+				{$menuItemCollection->getHeadline()->getLabel()} <i class="fa fa-caret-left pull-right"></i>
+			</a>
+			<ul n:tag-if="$menuItemCollection->hasHeadline()">
+				{foreach $menuItemCollection as $menuItem}
+					<li {ifCurrent $menuItem->getWildcardPath()}class="active"{/ifCurrent}>
+						<a n:href="$menuItem->getPath()">
+							<i n:if="$menuItem->getIcon()" class="fa {$menuItem->getIcon()}"></i>
+							{$menuItem->getLabel()}
+						</a>
+					</li>
+				{/foreach}
+			</ul>
+		</li>
 	{/foreach}
 </ul>
 ```
