@@ -16,6 +16,7 @@ class MenuItemTest extends PHPUnit_Framework_TestCase
 		$this->assertSame(':Module:Presenter:action', $menuItem->getPath());
 		$this->assertSame('Label', $menuItem->getLabel());
 		$this->assertSame('fa fa-user', $menuItem->getIcon());
+		$this->assertSame(':Module:Presenter:*', $menuItem->getWildcardPath());
 	}
 
 }
