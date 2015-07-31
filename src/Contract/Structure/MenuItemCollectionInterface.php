@@ -10,6 +10,7 @@
 namespace Zenify\ModularMenu\Contract\Structure;
 
 use IteratorAggregate;
+use Zenify\ModularMenu\Structure\MenuHeadline;
 
 
 interface MenuItemCollectionInterface extends IteratorAggregate
@@ -19,5 +20,17 @@ interface MenuItemCollectionInterface extends IteratorAggregate
 	 * @return MenuItemInterface[]
 	 */
 	function getIterator();
+
+
+	/**
+	 * @return bool
+	 */
+	function hasHeadline();
+
+
+	/**
+	 * @return MenuHeadline
+	 */
+	function getHeadline();
 
 }

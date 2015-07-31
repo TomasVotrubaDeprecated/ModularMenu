@@ -19,6 +19,11 @@ final class MenuItemCollection implements MenuItemCollectionInterface
 {
 
 	/**
+	 * @var MenuHeadline
+	 */
+	private $menuHeadline;
+
+	/**
 	 * @var MenuItemInterface[]
 	 */
 	private $menuItems;
@@ -29,7 +34,13 @@ final class MenuItemCollection implements MenuItemCollectionInterface
 	 */
 	public function __construct(array $menuItems)
 	{
-        Assertion::allIsInstanceOf($menuItems, MenuItemInterface::class);
+		Assertion::allIsInstanceOf($menuItems, MenuItemInterface::class);
+		foreach ($menuItems as $key => $menuItem) {
+			if ($menuItem instanceof MenuHeadline) {
+				$this->menuHeadline = $menuItem;
+				unset($menuItems[$key]);
+			}
+		}
 		$this->menuItems = $menuItems;
 	}
 
@@ -40,6 +51,24 @@ final class MenuItemCollection implements MenuItemCollectionInterface
 	public function getIterator()
 	{
 		return new ArrayIterator($this->menuItems);
+	}
+
+
+	/**
+	 * {@inheritdoc}
+	 */
+	public function hasHeadline()
+	{
+		return ($this->menuHeadline instanceof MenuHeadline);
+	}
+
+
+	/**
+	 * {@inheritdoc}
+	 */
+	public function getHeadline()
+	{
+		return $this->menuHeadline;
 	}
 
 }
