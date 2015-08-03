@@ -1,5 +1,5 @@
 services:
-	- Zenify\ModularMenu\Tests\DI\ModularMenuExtensionSource\SomeMenuItemsProvider
+	- Zenify\ModularMenu\Tests\Source\SomeMenuItemsProvider
 
 extensions:
 	- Zenify\ModularMenu\DI\ModularMenuExtension
