@@ -10,6 +10,9 @@
 namespace Zenify\ModularMenu\Structure;
 
 
+use Nette\Utils\Strings;
+
+
 class MenuItem extends AbstractMenuItem
 {
 
@@ -40,6 +43,13 @@ class MenuItem extends AbstractMenuItem
 	public function getPath()
 	{
 		return $this->path;
+	}
+
+
+	public function getWildcardPath()
+	{
+		// note: converts :Core:Admin:Homepage:default into :Core:Admin:Homepage:*
+		return Strings::replace($this->path, '~[a-z0-9]+$~i', '*');
 	}
 
 }
