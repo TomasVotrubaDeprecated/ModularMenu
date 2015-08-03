@@ -8,6 +8,7 @@ use Zenify\ModularMenu\Storage\MenuItemStorage;
 use Zenify\ModularMenu\Structure\MenuItemCollection;
 use Zenify\ModularMenu\Tests\Source\SomeMenuItemsProvider;
 use Zenify\ModularMenu\Tests\Storage\MenuItemStorageSource\RankedMenuItemStorage;
+use Zenify\ModularMenu\Validator\MenuItemsProviderValidator;
 
 
 class MenuItemStorageTest extends PHPUnit_Framework_TestCase
@@ -21,7 +22,8 @@ class MenuItemStorageTest extends PHPUnit_Framework_TestCase
 
 	protected function setUp()
 	{
-		$this->menuItemStorage = new MenuItemStorage;
+		$menuItemsProviderValidator = new MenuItemsProviderValidator;
+		$this->menuItemStorage = new MenuItemStorage($menuItemsProviderValidator);
 		$this->menuItemStorage->addMenuItemsProvider(new SomeMenuItemsProvider);
 	}
 
@@ -29,7 +31,7 @@ class MenuItemStorageTest extends PHPUnit_Framework_TestCase
 	public function testGetByPosition()
 	{
 		$menuItemCollection = $this->menuItemStorage->getByPosition('adminMenu');
-		$this->assertInstanceOf(MenuItemCollection::class, $menuItemCollection[0]);
+		$this->assertInstanceOf(MenuItemCollection::class, $menuItemCollection[0][0]);
 	}
 
 
