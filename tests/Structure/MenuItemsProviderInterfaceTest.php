@@ -18,9 +18,12 @@ class MenuItemsProvider extends PHPUnit_Framework_TestCase
 		$this->assertSame('adminMenu', $blogMenuItemsProvider->getPosition());
 
 		$items = $blogMenuItemsProvider->getItems();
-		$this->assertInstanceOf(MenuItemCollectionInterface::class, $items);
-		foreach ($items as $item) {
-			$this->assertInstanceOf(MenuItem::class, $item);
+		$this->assertInternalType('array', $items);
+		foreach ($items as $collection) {
+			$this->assertInstanceOf(MenuItemCollectionInterface::class, $collection);
+			foreach ($collection as $item) {
+				$this->assertInstanceOf(MenuItem::class, $item);
+			}
 		}
 	}
 

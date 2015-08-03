@@ -23,9 +23,11 @@ class ValidProvider3 implements MenuItemsProviderInterface
 	 */
 	public function getItems()
 	{
-		return new MenuItemCollection([
-			new MenuItem('label', 'path')
-		]);
+		return [
+			new MenuItemCollection([
+				new MenuItem('label', 'path')
+			])
+		];
 	}
 
 }

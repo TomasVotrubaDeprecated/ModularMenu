@@ -14,6 +14,7 @@ use Zenify\ModularMenu\Exception\MissingPositionException;
 use Zenify\ModularMenu\Contract\Provider\MenuItemsProviderInterface;
 use Zenify\ModularMenu\Structure\MenuItem;
 use Zenify\ModularMenu\Structure\MenuItemCollection;
+use Zenify\ModularMenu\Validator\MenuItemsProviderValidator;
 
 
 class MenuItemStorage
@@ -29,9 +30,22 @@ class MenuItemStorage
 	 */
 	private $menuItems;
 
+	/**
+	 * @var MenuItemsProviderValidator
+	 */
+	private $menuItemsProviderValidator;
+
+
+	public function __construct(MenuItemsProviderValidator $menuItemsProviderValidator)
+	{
+		$this->menuItemsProviderValidator = $menuItemsProviderValidator;
+	}
+
 
 	public function addMenuItemsProvider(MenuItemsProviderInterface $menuItemsProvider)
 	{
+		$this->menuItemsProviderValidator->validate($menuItemsProvider);
+
 		if ($menuItemsProvider instanceof RankedMenuItemsProviderInterface) {
 			$this->menuItems[$menuItemsProvider->getPosition()][$menuItemsProvider->getRank()][] = $menuItemsProvider->getItems();
 

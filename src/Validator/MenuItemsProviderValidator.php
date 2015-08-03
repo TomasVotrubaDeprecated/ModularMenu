@@ -34,8 +34,10 @@ class MenuItemsProviderValidator
 	{
 		if ($items !== []) {
             Assertion::allIsObject($items);
-            Assertion::isInstanceOf($items, MenuItemCollectionInterface::class);
-            Assertion::allIsInstanceOf($items, AbstractMenuItem::class);
+            Assertion::allIsInstanceOf($items, MenuItemCollectionInterface::class);
+			foreach ($items as $collection) {
+				Assertion::allIsInstanceOf($collection, AbstractMenuItem::class);
+			}
 		}
 
 		return TRUE;
