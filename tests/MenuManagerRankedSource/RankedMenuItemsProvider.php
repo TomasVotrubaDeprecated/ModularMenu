@@ -24,9 +24,11 @@ class RankedMenuItemsProvider implements RankedMenuItemsProviderInterface
 	 */
 	public function getItems()
 	{
-		return new MenuItemCollection([
-			new MenuItem('Label', ':Module:Presenter:')
-		]);
+		return [
+			new MenuItemCollection([
+				new MenuItem('Label', ':Module:Presenter:')
+			])
+		];
 	}
 
 

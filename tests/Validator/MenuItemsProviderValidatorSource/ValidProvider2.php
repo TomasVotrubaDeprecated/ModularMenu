@@ -22,7 +22,7 @@ class ValidProvider2 implements MenuItemsProviderInterface
 	 */
 	public function getItems()
 	{
-		return new MenuItemCollection([]);
+		return [new MenuItemCollection([])];
 	}
 
 }
