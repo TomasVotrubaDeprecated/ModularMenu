@@ -9,8 +9,6 @@
 
 namespace Zenify\ModularMenu\Contract\Provider;
 
-use Zenify\ModularMenu\Contract\Structure\MenuItemCollectionInterface;
-
 
 interface MenuItemsProviderInterface
 {
@@ -24,7 +22,7 @@ interface MenuItemsProviderInterface
 
 
 	/**
-	 * @return MenuItemCollectionInterface
+	 * @return MenuItemCollectionInterface[]
 	 */
 	function getItems();
 
