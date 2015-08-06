@@ -46,11 +46,15 @@ final class MenuItemStorage implements MenuItemStorageInterface
 	 */
 	public function addMenuItemsProvider(MenuItemsProviderInterface $menuItemsProvider)
 	{
+		$this->menuItemsProviderValidator->validate($menuItemsProvider);
+
+		$position = $menuItemsProvider->getPosition();
+		$items = $menuItemsProvider->getItems();
 		if ($menuItemsProvider instanceof RankedMenuItemsProviderInterface) {
-			$this->menuItems[$menuItemsProvider->getPosition()][$menuItemsProvider->getRank()][] = $menuItemsProvider->getItems();
+			$this->menuItems[$position][$menuItemsProvider->getRank()][] = $items;
 
 		} else {
-			$this->menuItems[$menuItemsProvider->getPosition()][self::DEFAULT_RANK][] = $menuItemsProvider->getItems();
+			$this->menuItems[$position][self::DEFAULT_RANK][] = $items;
 		}
 	}
 

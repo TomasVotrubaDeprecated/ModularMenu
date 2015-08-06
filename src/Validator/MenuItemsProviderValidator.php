@@ -30,7 +30,7 @@ final class MenuItemsProviderValidator implements MenuItemProviderValidatorInter
 
 
 	/**
-	 * @param mixed|MenuItemCollectionInterface|MenuItemInterface[] $items
+	 * @param mixed|MenuItemInterface[] $items
 	 * @throws InvalidArgumentException
 	 * @return bool
 	 */
