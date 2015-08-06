@@ -8,6 +8,7 @@ use Zenify\ModularMenu\MenuManager;
 use Zenify\ModularMenu\Storage\MenuItemStorage;
 use Zenify\ModularMenu\Structure\MenuItemCollection;
 use Zenify\ModularMenu\Tests\Source\SomeMenuItemsProvider;
+use Zenify\ModularMenu\Validator\MenuItemsProviderValidator;
 
 
 class MenuManagerTest extends PHPUnit_Framework_TestCase
@@ -21,7 +22,7 @@ class MenuManagerTest extends PHPUnit_Framework_TestCase
 
 	protected function setUp()
 	{
-		$menuItemStorage = new MenuItemStorage;
+		$menuItemStorage = new MenuItemStorage(new MenuItemsProviderValidator);
 		$menuItemStorage->addMenuItemsProvider(new SomeMenuItemsProvider);
 		$this->menuManager = new MenuManager($menuItemStorage);
 	}

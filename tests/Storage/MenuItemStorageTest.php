@@ -8,6 +8,7 @@ use Zenify\ModularMenu\Storage\MenuItemStorage;
 use Zenify\ModularMenu\Structure\MenuItemCollection;
 use Zenify\ModularMenu\Tests\Source\SomeMenuItemsProvider;
 use Zenify\ModularMenu\Tests\Storage\MenuItemStorageSource\RankedMenuItemStorage;
+use Zenify\ModularMenu\Validator\MenuItemsProviderValidator;
 
 
 class MenuItemStorageTest extends PHPUnit_Framework_TestCase
@@ -21,7 +22,7 @@ class MenuItemStorageTest extends PHPUnit_Framework_TestCase
 
 	protected function setUp()
 	{
-		$this->menuItemStorage = new MenuItemStorage;
+		$this->menuItemStorage = new MenuItemStorage(new MenuItemsProviderValidator);
 		$this->menuItemStorage->addMenuItemsProvider(new SomeMenuItemsProvider);
 	}
 

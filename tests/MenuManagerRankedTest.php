@@ -11,6 +11,7 @@ use Zenify\ModularMenu\Structure\MenuItemCollection;
 use Zenify\ModularMenu\Tests\MenuManagerRankedSource\RankedMenuItemsProvider;
 use Zenify\ModularMenu\Tests\MenuManagerRankedSource\RankedMenuItemsProvider2;
 use Zenify\ModularMenu\Tests\MenuManagerRankedSource\RankedMenuItemsProvider3;
+use Zenify\ModularMenu\Validator\MenuItemsProviderValidator;
 
 
 class MenuManagerRankedTest extends PHPUnit_Framework_TestCase
@@ -18,7 +19,7 @@ class MenuManagerRankedTest extends PHPUnit_Framework_TestCase
 
 	public function testGetMenuStructureOrderedByRank()
 	{
-		$menuItemStorage = new MenuItemStorage;
+		$menuItemStorage = new MenuItemStorage(new MenuItemsProviderValidator);
 		$menuItemStorage->addMenuItemsProvider(new RankedMenuItemsProvider3);
 		$menuItemStorage->addMenuItemsProvider(new RankedMenuItemsProvider);
 		$menuItemStorage->addMenuItemsProvider(new RankedMenuItemsProvider2);
