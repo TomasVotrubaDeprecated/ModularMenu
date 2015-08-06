@@ -27,7 +27,7 @@ extensions:
 
 ### 1. Create providers
 
-Create class that implements `Zenify\ModularMenu\Contract\Provider\MenuItemsProviderInterface`.
+Create class that implements `Zenify\ModularMenu\Contract\Provider\MenuItemsProviderInterface` or `Zenify\ModularMenu\Contract\Provider\RankedMenuItemsProviderInterface` to set position of items.
 
 ```php
 namespace App\Modules\MyModule\Providers\MyModuleMenuItemsProvider;
@@ -35,7 +35,7 @@ namespace App\Modules\MyModule\Providers\MyModuleMenuItemsProvider;
 use Zenify\ModularMenu\Contract\Provider\MenuItemsProviderInterface;
 
 
-class MyModuleMenuItemsProvider implements MenuItemsProviderInterface
+final class MyModuleMenuItemsProvider implements MenuItemsProviderInterface
 {
 
 	/**
