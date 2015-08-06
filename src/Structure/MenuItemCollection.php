@@ -29,7 +29,7 @@ final class MenuItemCollection implements MenuItemCollectionInterface
 	 */
 	public function __construct(array $menuItems)
 	{
-        Assertion::allIsInstanceOf($menuItems, MenuItemInterface::class);
+		Assertion::allIsInstanceOf($menuItems, MenuItemInterface::class);
 		$this->menuItems = $menuItems;
 	}
 

@@ -28,9 +28,9 @@ final class MenuManager implements MenuManagerInterface
 	}
 
 
-    /**
-     * {@inheritdoc}
-     */
+	/**
+	 * {@inheritdoc}
+	 */
 	public function getMenuStructure($name)
 	{
 		return $this->menuItemsStorage->getByPosition($name);

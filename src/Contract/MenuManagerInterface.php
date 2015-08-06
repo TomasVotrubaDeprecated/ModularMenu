@@ -15,10 +15,10 @@ use Zenify\ModularMenu\Contract\Structure\MenuItemCollectionInterface;
 interface MenuManagerInterface
 {
 
-    /**
-     * @param string $name
-     * @return MenuItemCollectionInterface[]
-     */
-    function getMenuStructure($name);
+	/**
+	 * @param string $name
+	 * @return MenuItemCollectionInterface[]
+	 */
+	function getMenuStructure($name);
 
 }

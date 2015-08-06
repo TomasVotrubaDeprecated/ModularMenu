@@ -27,41 +27,41 @@ abstract class AbstractMenuItem implements MenuItemInterface
 	private $icon;
 
 
-    /**
-     * {@inheritdoc}
-     */
+	/**
+	 * {@inheritdoc}
+	 */
 	public function getLabel()
 	{
 		return $this->label;
 	}
 
 
-    /**
-     * {@inheritdoc}
-     */
+	/**
+	 * {@inheritdoc}
+	 */
 	public function getIcon()
 	{
 		return $this->icon;
 	}
 
 
-    /**
-     * @param string $label
-     */
-    protected function setLabel($label)
-    {
-        Assertion::string($label);
-        $this->label = $label;
-    }
+	/**
+	 * @param string $label
+	 */
+	protected function setLabel($label)
+	{
+		Assertion::string($label);
+		$this->label = $label;
+	}
 
 
-    /**
-     * @param string $icon
-     */
-    protected function setIcon($icon)
-    {
-        Assertion::string($icon);
-        $this->icon = $icon;
-    }
+	/**
+	 * @param string $icon
+	 */
+	protected function setIcon($icon)
+	{
+		Assertion::string($icon);
+		$this->icon = $icon;
+	}
 
 }

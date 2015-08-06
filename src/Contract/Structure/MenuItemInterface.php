@@ -13,15 +13,15 @@ namespace Zenify\ModularMenu\Contract\Structure;
 interface MenuItemInterface
 {
 
-    /**
-     * @return string
-     */
-    function getLabel();
+	/**
+	 * @return string
+	 */
+	function getLabel();
 
 
-    /**
-     * @return string
-     */
-    function getIcon();
+	/**
+	 * @return string
+	 */
+	function getIcon();
 
 }
