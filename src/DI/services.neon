@@ -3,4 +3,3 @@ services:
 	- Zenify\ModularMenu\Storage\MenuItemStorage
 	- Zenify\ModularMenu\Structure\MenuItemFactory
 	- Zenify\ModularMenu\Validator\MenuItemsProviderValidator
-

@@ -10,7 +10,7 @@
 namespace Zenify\ModularMenu\Structure;
 
 
-class MenuHeadline extends AbstractMenuItem
+final class MenuHeadline extends AbstractMenuItem
 {
 
 	/**

@@ -12,13 +12,17 @@ namespace Zenify\ModularMenu\Validator;
 use Assert\Assertion;
 use Zenify\ModularMenu\Contract\Provider\MenuItemsProviderInterface;
 use Zenify\ModularMenu\Contract\Structure\MenuItemCollectionInterface;
+use Zenify\ModularMenu\Contract\Structure\MenuItemInterface;
+use Zenify\ModularMenu\Contract\Validator\MenuItemProviderValidatorInterface;
 use Zenify\ModularMenu\Exception\InvalidArgumentException;
-use Zenify\ModularMenu\Structure\AbstractMenuItem;
 
 
-class MenuItemsProviderValidator
+final class MenuItemsProviderValidator implements MenuItemProviderValidatorInterface
 {
 
+	/**
+	 * {@inheritdoc}
+	 */
 	public function validate(MenuItemsProviderInterface $provider)
 	{
 		return $this->validateItems($provider->getItems());
@@ -26,7 +30,7 @@ class MenuItemsProviderValidator
 
 
 	/**
-	 * @param mixed|MenuItemCollectionInterface|AbstractMenuItem[] $items
+	 * @param mixed|MenuItemCollectionInterface|MenuItemInterface[] $items
 	 * @throws InvalidArgumentException
 	 * @return bool
 	 */
@@ -35,7 +39,7 @@ class MenuItemsProviderValidator
 		if ($items !== []) {
             Assertion::allIsObject($items);
             Assertion::isInstanceOf($items, MenuItemCollectionInterface::class);
-            Assertion::allIsInstanceOf($items, AbstractMenuItem::class);
+            Assertion::allIsInstanceOf($items, MenuItemInterface::class);
 		}
 
 		return TRUE;

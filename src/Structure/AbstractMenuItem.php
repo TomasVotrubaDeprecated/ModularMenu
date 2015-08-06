@@ -13,7 +13,7 @@ use Assert\Assertion;
 use Zenify\ModularMenu\Contract\Structure\MenuItemInterface;
 
 
-class AbstractMenuItem implements MenuItemInterface
+abstract class AbstractMenuItem implements MenuItemInterface
 {
 
 	/**
