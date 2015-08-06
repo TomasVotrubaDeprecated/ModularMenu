@@ -5,6 +5,7 @@ namespace Zenify\ModularMenu\Tests\DI\ModularMenuExtension;
 use Nette\DI\Compiler;
 use Nette\DI\ContainerBuilder;
 use PHPUnit_Framework_TestCase;
+use Zenify\ModularMenu\Contract\Storage\MenuItemStorageInterface;
 use Zenify\ModularMenu\DI\ModularMenuExtension;
 use Zenify\ModularMenu\Storage\MenuItemStorage;
 use Zenify\ModularMenu\Tests\Source\SomeMenuItemsProvider;
@@ -35,7 +36,7 @@ class ModularMenuExtensionTest extends PHPUnit_Framework_TestCase
 
 		$this->assertSame(
 			MenuItemStorage::class,
-			$builder->getDefinition($builder->getByType(MenuItemStorage::class))->getClass()
+			$builder->getDefinition($builder->getByType(MenuItemStorageInterface::class))->getClass()
 		);
 	}
 
@@ -51,7 +52,7 @@ class ModularMenuExtensionTest extends PHPUnit_Framework_TestCase
 		$this->extension->beforeCompile();
 
 		$builder->prepareClassList();
-		$storageDefinition = $builder->getDefinition($builder->getByType(MenuItemStorage::class));
+		$storageDefinition = $builder->getDefinition($builder->getByType(MenuItemStorageInterface::class));
 		$storageDefinitionSetup = $storageDefinition->getSetup();
 		$this->assertSame(
 			'@' . SomeMenuItemsProvider::class,

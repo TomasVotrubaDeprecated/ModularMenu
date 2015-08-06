@@ -10,19 +10,19 @@
 namespace Zenify\ModularMenu;
 
 use Zenify\ModularMenu\Contract\MenuManagerInterface;
-use Zenify\ModularMenu\Storage\MenuItemStorage;
+use Zenify\ModularMenu\Contract\Storage\MenuItemStorageInterface;
 
 
 final class MenuManager implements MenuManagerInterface
 {
 
 	/**
-	 * @var MenuItemStorage
+	 * @var MenuItemStorageInterface
 	 */
 	private $menuItemsStorage;
 
 
-	public function __construct(MenuItemStorage $menuItemsStorage)
+	public function __construct(MenuItemStorageInterface $menuItemsStorage)
 	{
 		$this->menuItemsStorage = $menuItemsStorage;
 	}

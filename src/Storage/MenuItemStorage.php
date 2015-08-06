@@ -10,14 +10,13 @@
 namespace Zenify\ModularMenu\Storage;
 
 use Zenify\ModularMenu\Contract\Provider\RankedMenuItemsProviderInterface;
-use Zenify\ModularMenu\Contract\Structure\MenuItemInterface;
+use Zenify\ModularMenu\Contract\Storage\MenuItemStorageInterface;
 use Zenify\ModularMenu\Exception\MissingPositionException;
 use Zenify\ModularMenu\Contract\Provider\MenuItemsProviderInterface;
-use Zenify\ModularMenu\Structure\MenuItemCollection;
 use Zenify\ModularMenu\Validator\MenuItemsProviderValidator;
 
 
-class MenuItemStorage
+final class MenuItemStorage implements MenuItemStorageInterface
 {
 
 	/**
@@ -42,6 +41,9 @@ class MenuItemStorage
 	}
 
 
+	/**
+	 * {@inheritdoc}
+	 */
 	public function addMenuItemsProvider(MenuItemsProviderInterface $menuItemsProvider)
 	{
 		if ($menuItemsProvider instanceof RankedMenuItemsProviderInterface) {
@@ -54,8 +56,7 @@ class MenuItemStorage
 
 
 	/**
-	 * @param string $position
-	 * @return MenuItemCollection[]
+	 * {@inheritdoc}
 	 */
 	public function getByPosition($position)
 	{
