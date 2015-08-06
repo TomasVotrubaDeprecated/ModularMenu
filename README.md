@@ -77,19 +77,19 @@ The render part is up to you, but here we'll use standalone component.
 
 ```php
 use Nette\Application\UI\Control;
-use Zenify\ModularMenu\MenuManager;
+use Zenify\ModularMenu\Contract\MenuManagerInterface;
 
 
 class MenuControl extends Control
 {
 
 	/**
-	 * @var MenuManager
+	 * @var MenuManagerInterface
 	 */
 	private $menuManager;
 
 
-	public function __construct(MenuManager $menuManager)
+	public function __construct(MenuManagerInterface $menuManager)
 	{
 		$this->menuManager = $menuManager;
 	}
