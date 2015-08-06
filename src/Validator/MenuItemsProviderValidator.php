@@ -37,9 +37,9 @@ final class MenuItemsProviderValidator implements MenuItemProviderValidatorInter
 	private function validateItems($items)
 	{
 		if ($items !== []) {
-            Assertion::allIsObject($items);
-            Assertion::isInstanceOf($items, MenuItemCollectionInterface::class);
-            Assertion::allIsInstanceOf($items, MenuItemInterface::class);
+			Assertion::allIsObject($items);
+			Assertion::isInstanceOf($items, MenuItemCollectionInterface::class);
+			Assertion::allIsInstanceOf($items, MenuItemInterface::class);
 		}
 
 		return TRUE;
