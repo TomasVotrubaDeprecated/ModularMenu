@@ -14,6 +14,7 @@ use Zenify\ModularMenu\Contract\Provider\MenuItemsProviderInterface;
 use Zenify\ModularMenu\Contract\Structure\MenuItemCollectionInterface;
 use Zenify\ModularMenu\Exception\InvalidArgumentException;
 use Zenify\ModularMenu\Structure\AbstractMenuItem;
+use Zenify\ModularMenu\Structure\MenuHeadline;
 
 
 class MenuItemsProviderValidator
@@ -36,6 +37,31 @@ class MenuItemsProviderValidator
             Assertion::allIsObject($items);
             Assertion::isInstanceOf($items, MenuItemCollectionInterface::class);
             Assertion::allIsInstanceOf($items, AbstractMenuItem::class);
+			$this->containsMaximallyOneInstance($items, MenuHeadline::class);
+		}
+
+		return TRUE;
+	}
+
+
+	/**
+	 * @param array $items
+	 * @param string $class
+	 * @return bool
+	 * @throws InvalidArgumentException
+	 */
+	private function containsMaximallyOneInstance(array $items, $class)
+	{
+		$contains = FALSE;
+		foreach ($items as $item) {
+			if (is_object($item) && get_class($item) === $class) {
+				if ($contains) {
+					throw new InvalidArgumentException('Only one instance of ' . $class . ' is allowed.');
+
+				} else {
+					$contains = TRUE;
+				}
+			}
 		}
 
 		return TRUE;
