@@ -23,7 +23,7 @@ extensions:
 ```
 
 
-## Usage
+## Basic usage
 
 ### 1. Create providers
 
@@ -110,6 +110,43 @@ Our `default.latte` might look like this:
 ```twig
 {foreach $menuItemGroups as $menuItemCollection}
 	<ul>
+		{foreach $menuItemCollection as $menuItem}
+			<li>
+				<a n:href="$menuItem->getPath()">{$menuItem->getLabel()}</a>
+			</li>
+		{/foreach}
+	</ul>
+{/foreach}
+```
+
+
+## Basic usage with headline
+
+### 1. Update providers
+
+We update our `getItems()` method from `MyModuleMenuItemsProvider` class to look like this:
+
+```php
+/**
+ * {@inheritdoc}
+ */
+public function getItems()
+{
+	return new MenuItemCollection([
+		new MenuHeadline('Headline label'),
+		new MenuItem('Label', ':Module:Presenter:')
+	]);
+}
+```
+
+### 2. Use in menu component
+
+Our `default.latte` might look like this:
+
+```twig
+{foreach $menuItemGroups as $menuItemCollection}
+	<ul>
+		<li>{$menuItemCollection->getHeadline()->getLabel()}</li>
 		{foreach $menuItemCollection as $menuItem}
 			<li>
 				<a n:href="$menuItem->getPath()">{$menuItem->getLabel()}</a>
